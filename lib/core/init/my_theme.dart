@@ -5,7 +5,7 @@ import 'package:porfolio_web/core/constants/color/color_constants.dart';
 ThemeData myTheme = ThemeData(
     useMaterial3: true,
     fontFamily: 'Poppins',
-    scaffoldBackgroundColor: ColorConstants.instance.black,
+    scaffoldBackgroundColor: Colors.black,
     appBarTheme: AppBarTheme(
         color: ColorConstants.instance.white,
         toolbarTextStyle: TextStyle(
