@@ -40705,7 +40705,7 @@ case 2:return A.Z(o,r)}})
 return A.a0($async$oF,r)}}
 A.a0j.prototype={}
 A.qF.prototype={
-gkC(){return"images/wallpaper.JPG"},
+gkC(){return"assets/images/wallpaper.JPG"},
 ZT(a){var s,r={},q=a.a
 if(q==null)q=$.M7()
 r.a=r.b=null
@@ -40731,7 +40731,7 @@ if(q==null)return a.j(0,r)
 if(b<2||b>(r+q)/2)return a.j(0,q)
 else return a.j(0,r)},
 BM(a){var s,r,q,p
-if(a==="images/wallpaper.JPG")return 1
+if(a==="assets/images/wallpaper.JPG")return 1
 s=A.a77(a)
 r=s.gkO().length>1?s.gkO()[s.gkO().length-2]:""
 q=$.ae3().pV(r)
