@@ -16,7 +16,7 @@ abstract class _HomeViewModelBase with Store {
   }
 
   @action
-  void onItemTapped(int index) {
+  onItemTapped(int index) {
     selectedItem = index;
   }
 

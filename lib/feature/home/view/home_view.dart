@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:kartal/kartal.dart';
 import 'package:porfolio_web/core/base/base_state.dart';
 import 'package:porfolio_web/core/component/row/my_row.dart';
@@ -7,7 +6,6 @@ import 'package:porfolio_web/feature/portfolio/view/portfolio_view.dart';
 import 'package:porfolio_web/feature/skills/view/skills_view.dart';
 import '../../../product/components/app_bar/app_bar_actions.dart';
 import '../../../product/components/app_bar/app_bar_title.dart';
-import '../../../product/components/button/discover_more_button.dart';
 import '../../about/view/about_view.dart';
 import '../view_modal/home_view_model.dart';
 
@@ -67,14 +65,12 @@ class HomeView extends StatelessWidget with BaseState {
 
   AppBar _AppbarSection() {
     return AppBar(
-      title: Observer(builder: (_) {
-        return AppBarTitle(
-          homeKey: homeKey,
-          aboutKey: aboutKey,
-          skillsKey: skillsKey,
-          portfolioKey: portfolioKey,
-        );
-      }),
+      title: AppBarTitle(
+        homeKey: homeKey,
+        aboutKey: aboutKey,
+        skillsKey: skillsKey,
+        portfolioKey: portfolioKey,
+      ),
       actions: [AppBarActions()],
     );
   }
@@ -93,13 +89,17 @@ class HomeView extends StatelessWidget with BaseState {
             context.emptySizedHeightBoxNormal,
             _ButtonsSection(context),
             const Spacer(),
-            Observer(builder: (_) {
-              return DiscoverMoreButton(
-                viewModel: _viewModel,
-                index: 2,
-                itemKey: aboutKey,
-              );
-            })
+            ElevatedButton(
+                onPressed: () {
+                  _viewModel.onItemTapped(2);
+                  print(_viewModel.selectedItem.toString());
+                },
+                child: const Text("data"))
+            // DiscoverMoreButton(
+            //     viewModel: _viewModel,
+            //     index: 2,
+            //     itemKey: aboutKey,
+            //   )
           ],
         ),
       ),
@@ -133,7 +133,7 @@ class HomeView extends StatelessWidget with BaseState {
         image: DecorationImage(
           fit: BoxFit.cover,
           opacity: .7,
-          image: AssetImage("images/img_wallpaper.jpg"),
+          image: AssetImage("images/wallpaper.JPG"),
         ),
       ),
     );

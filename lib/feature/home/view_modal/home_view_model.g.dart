@@ -39,7 +39,7 @@ mixin _$HomeViewModel on _HomeViewModelBase, Store {
       ActionController(name: '_HomeViewModelBase', context: context);
 
   @override
-  void onItemTapped(int index) {
+  dynamic onItemTapped(int index) {
     final _$actionInfo = _$_HomeViewModelBaseActionController.startAction(
         name: '_HomeViewModelBase.onItemTapped');
     try {
