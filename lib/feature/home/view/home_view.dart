@@ -4,6 +4,7 @@ import 'package:porfolio_web/core/base/base_state.dart';
 import 'package:porfolio_web/core/component/row/my_row.dart';
 import 'package:porfolio_web/feature/portfolio/view/portfolio_view.dart';
 import 'package:porfolio_web/feature/skills/view/skills_view.dart';
+import 'package:porfolio_web/product/components/button/discover_more_button.dart';
 import '../../../product/components/app_bar/app_bar_actions.dart';
 import '../../../product/components/app_bar/app_bar_title.dart';
 import '../../about/view/about_view.dart';
@@ -89,17 +90,11 @@ class HomeView extends StatelessWidget with BaseState {
             context.emptySizedHeightBoxNormal,
             _ButtonsSection(context),
             const Spacer(),
-            ElevatedButton(
-                onPressed: () {
-                  _viewModel.onItemTapped(2);
-                  print(_viewModel.selectedItem.toString());
-                },
-                child: const Text("data"))
-            // DiscoverMoreButton(
-            //     viewModel: _viewModel,
-            //     index: 2,
-            //     itemKey: aboutKey,
-            //   )
+            DiscoverMoreButton(
+              viewModel: _viewModel,
+              index: 2,
+              itemKey: aboutKey,
+            )
           ],
         ),
       ),
@@ -133,7 +128,7 @@ class HomeView extends StatelessWidget with BaseState {
         image: DecorationImage(
           fit: BoxFit.cover,
           opacity: .7,
-          image: AssetImage("images/wallpaper.JPG"),
+          image: AssetImage("assets/images/wallpaper.JPG"),
         ),
       ),
     );
