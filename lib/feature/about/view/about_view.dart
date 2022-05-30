@@ -10,4 +10,3 @@ class AboutView extends StatelessWidget {
     );
   }
 }
-

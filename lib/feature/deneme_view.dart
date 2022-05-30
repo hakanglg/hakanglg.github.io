@@ -1,59 +1,55 @@
-import 'package:flutter/material.dart';
-import 'package:web_smooth_scroll/web_smooth_scroll.dart';
+// import 'package:flutter/material.dart';
+// import 'package:kartal/kartal.dart';
 
- 
- 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key}) : super(key: key);
+// class DenemeView extends StatefulWidget {
+//   const DenemeView({Key? key}) : super(key: key);
 
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
+//   @override
+//   State<DenemeView> createState() => _DenemeViewState();
+// }
 
-class _MyHomePageState extends State<MyHomePage> {
-  // Controllers
-  late ScrollController _scrollController;
+// class _DenemeViewState extends State<DenemeView> {
+  
 
-  @override
-  void initState() {
-    // initialize scroll controllers
-    _scrollController = ScrollController();
-
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Web Smooth Scroll'),
-      ),
-      body: WebSmoothScroll(
-        controller: _scrollController,
-        scrollOffset: 100,
-        animationDuration: 600,
-        curve: Curves.easeInOutCirc,
-        child: SingleChildScrollView(
-          physics: const NeverScrollableScrollPhysics(),
-          controller: _scrollController,
-          child: _buildScrollableList(),
-        ),
-      ),
-    );
-  }
-
-  /// Builder Functions
-  ///
-  ///
-  Widget _buildScrollableList() => Column(
-        children: List.generate(
-          50,
-          (index) => Container(
-            height: 100,
-            margin:
-                const EdgeInsets.symmetric(vertical: 22.0, horizontal: 120.0),
-            color: Colors.red,
-          ),
-        ),
-      );
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       floatingActionButton: Row(
+//         children: [
+//           FloatingActionButton(onPressed: () {
+//             scrollToItem(context, itemKey);
+//           }),
+//           FloatingActionButton(
+//             onPressed: () {
+//               scrollToItem(context, itemKey2);
+//             },
+//             child: const Icon(Icons.add),
+//           ),
+//         ],
+//       ),
+//       appBar: AppBar(),
+//       body: SingleChildScrollView(
+//           child: Column(
+//         // children: [
+//           Container(
+//             color: Colors.red,
+//             height: context.dynamicHeight(1),
+//             width: context.dynamicWidth(1),
+//           ),
+//           Container(
+//             key: itemKey,
+//             color: Colors.blue,
+//             height: context.dynamicHeight(1),
+//             width: context.dynamicWidth(1),
+//           ),
+//           Container(
+//             key: itemKey2,
+//             color: Colors.black,
+//             height: context.dynamicHeight(1),
+//             width: context.dynamicWidth(1),
+//           )
+//         ],
+//       )),
+//     );
+//   }
+// }
