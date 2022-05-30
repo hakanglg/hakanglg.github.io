@@ -28,7 +28,7 @@ class HomeView extends StatelessWidget with BaseState {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _AppbarSection(),
+      appBar: _AppbarSection(context),
       body: LayoutBuilder(
         builder: (context, constraint) => SingleChildScrollView(
           child: ConstrainedBox(
@@ -64,14 +64,14 @@ class HomeView extends StatelessWidget with BaseState {
     );
   }
 
-  AppBar _AppbarSection() {
+  AppBar _AppbarSection(BuildContext context) {
     return AppBar(
       title: AppBarTitle(
-        homeKey: homeKey,
-        aboutKey: aboutKey,
-        skillsKey: skillsKey,
-        portfolioKey: portfolioKey,
-      ),
+          viewModel: _viewModel,
+          homeKey: homeKey,
+          aboutKey: aboutKey,
+          skillsKey: skillsKey,
+          portfolioKey: portfolioKey),
       actions: [AppBarActions()],
     );
   }
@@ -90,6 +90,17 @@ class HomeView extends StatelessWidget with BaseState {
             context.emptySizedHeightBoxNormal,
             _ButtonsSection(context),
             const Spacer(),
+            // InkWell(
+            //   onTap: () {
+            //     _viewModel.onItemTapped(2);
+            //   },
+            //   child: Column(
+            //     children: const [
+            //       Text("_discoverMore"),
+            //       Icon(LineAwesomeIcons.angle_down)
+            //     ],
+            //   ),
+            // )
             DiscoverMoreButton(
               viewModel: _viewModel,
               index: 2,

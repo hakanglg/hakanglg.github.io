@@ -17,8 +17,7 @@ class DiscoverMoreButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Observer(builder: (_) {
-      return InkWell(
+    return InkWell(
         onTap: () => viewModel.scrollAndSelected(context, itemKey, index),
         child: Column(
           children: [
@@ -27,6 +26,5 @@ class DiscoverMoreButton extends StatelessWidget {
           ],
         ),
       );
-    });
   }
 }

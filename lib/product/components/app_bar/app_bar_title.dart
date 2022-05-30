@@ -4,69 +4,72 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import '../../../core/constants/text_style/custom_text_style.dart';
 
 class AppBarTitle extends StatelessWidget {
-  final HomeViewModel viewModel = HomeViewModel();
+  final String homeTitle = "Home";
+  final String aboutTitle = "About";
+  final String skillsTitle = "Skills";
+  final String portfolioTitle = "Portfolio";
 
-  final GlobalKey homeKey, aboutKey, skillsKey, portfolioKey;
+  const AppBarTitle({
+    Key? key,
+    required HomeViewModel viewModel,
+    required this.homeKey,
+    required this.aboutKey,
+    required this.skillsKey,
+    required this.portfolioKey,
+  })  : _viewModel = viewModel,
+        super(key: key);
 
-  final String _home = "Home";
+  final HomeViewModel _viewModel;
+  final GlobalKey<State<StatefulWidget>> homeKey;
+  final GlobalKey<State<StatefulWidget>> aboutKey;
+  final GlobalKey<State<StatefulWidget>> skillsKey;
+  final GlobalKey<State<StatefulWidget>> portfolioKey;
 
-  final String _about = "About";
-
-  final String _skills = "Skills";
-
-  final String _portfolio = "Portfolio";
-
-  AppBarTitle(
-      {super.key,
-      required this.homeKey,
-      required this.aboutKey,
-      required this.skillsKey,
-      required this.portfolioKey});
   @override
   Widget build(BuildContext context) {
     return Wrap(
       spacing: 30,
       children: [
         InkWell(
-          onTap: () => viewModel.scrollAndSelected(context, homeKey, 1),
+          onTap: () => _viewModel.scrollAndSelected(context, homeKey, 1),
           child: Observer(builder: (_) {
             return Text(
-              _home,
-              style: viewModel.selectedItem == 1
-                  ? CustomTextStyle.SelectedTextStyle(context)
-                  : CustomTextStyle.unSelectedTextStyle(context),
+              homeTitle,
+              style: _viewModel.selectedItem == 1
+                  ? CustomTextStyle.SelectedTextStyle()
+                  : CustomTextStyle.unSelectedTextStyle(),
             );
           }),
         ),
+        Observer(builder: (_) {
+          return InkWell(
+              onTap: () => _viewModel.scrollAndSelected(context, aboutKey, 2),
+              child: Text(
+                aboutTitle,
+                style: _viewModel.selectedItem == 2
+                    ? CustomTextStyle.SelectedTextStyle()
+                    : CustomTextStyle.unSelectedTextStyle(),
+              ));
+        }),
         InkWell(
-            onTap: () => viewModel.scrollAndSelected(context, aboutKey, 2),
+            onTap: () => _viewModel.scrollAndSelected(context, skillsKey, 3),
             child: Observer(builder: (_) {
               return Text(
-                _about,
-                style: viewModel.selectedItem == 2
-                    ? CustomTextStyle.SelectedTextStyle(context)
-                    : CustomTextStyle.unSelectedTextStyle(context),
+                skillsTitle,
+                style: _viewModel.selectedItem == 3
+                    ? CustomTextStyle.SelectedTextStyle()
+                    : CustomTextStyle.unSelectedTextStyle(),
               );
             })),
         InkWell(
-            onTap: () => viewModel.scrollAndSelected(context, skillsKey, 3),
-            child: Observer(builder: (_) {
-              return Text(
-                _skills,
-                style: viewModel.selectedItem == 3
-                    ? CustomTextStyle.SelectedTextStyle(context)
-                    : CustomTextStyle.unSelectedTextStyle(context),
-              );
-            })),
-        InkWell(
-            onTap: () => viewModel.scrollAndSelected(context, portfolioKey, 4),
+            onTap: () => _viewModel.scrollAndSelected(context, portfolioKey, 4),
             child: Observer(
               builder: (_) {
                 return Text(
-                  _portfolio,
-                  style: viewModel.selectedItem == 4
-                      ? CustomTextStyle.SelectedTextStyle(context)
-                      : CustomTextStyle.unSelectedTextStyle(context),
+                  portfolioTitle,
+                  style: _viewModel.selectedItem == 4
+                      ? CustomTextStyle.SelectedTextStyle()
+                      : CustomTextStyle.unSelectedTextStyle(),
                 );
               },
             ))

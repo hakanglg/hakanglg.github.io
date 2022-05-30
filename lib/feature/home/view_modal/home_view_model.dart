@@ -18,6 +18,7 @@ abstract class _HomeViewModelBase with Store {
   @action
   onItemTapped(int index) {
     selectedItem = index;
+    print(selectedItem.toString());
   }
 
   @action

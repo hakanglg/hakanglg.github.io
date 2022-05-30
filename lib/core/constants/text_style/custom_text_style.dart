@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 class CustomTextStyle {
-  static TextStyle unSelectedTextStyle(BuildContext context) {
+  static TextStyle unSelectedTextStyle() {
     return const TextStyle(
       fontWeight: FontWeight.normal,
     );
   }
 
-  static TextStyle SelectedTextStyle(BuildContext context) {
+  static TextStyle SelectedTextStyle() {
     return const TextStyle(
       fontWeight: FontWeight.w900,
     );
