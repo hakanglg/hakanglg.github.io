@@ -67,12 +67,14 @@ class HomeView extends StatelessWidget with BaseState {
 
   AppBar _AppbarSection() {
     return AppBar(
-      title: AppBarTitle(
-        homeKey: homeKey,
-        aboutKey: aboutKey,
-        skillsKey: skillsKey,
-        portfolioKey: portfolioKey,
-      ),
+      title: Observer(builder: (_) {
+        return AppBarTitle(
+          homeKey: homeKey,
+          aboutKey: aboutKey,
+          skillsKey: skillsKey,
+          portfolioKey: portfolioKey,
+        );
+      }),
       actions: [AppBarActions()],
     );
   }

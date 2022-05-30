@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 class DiscoverMoreButton extends StatelessWidget {
@@ -16,14 +17,16 @@ class DiscoverMoreButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () => viewModel.scrollAndSelected(context, itemKey, index),
-      child: Column(
-        children: [
-          Text(_discoverMore),
-          const Icon(LineAwesomeIcons.angle_down)
-        ],
-      ),
-    );
+    return Observer(builder: (_) {
+      return InkWell(
+        onTap: () => viewModel.scrollAndSelected(context, itemKey, index),
+        child: Column(
+          children: [
+            Text(_discoverMore),
+            const Icon(LineAwesomeIcons.angle_down)
+          ],
+        ),
+      );
+    });
   }
 }
