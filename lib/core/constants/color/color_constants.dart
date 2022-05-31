@@ -7,6 +7,6 @@ class ColorConstants {
   final green = const Color(0xff20AB92);
   final black = const Color(0xff1E2225);
   final grey = const Color(0xffA0ACBD);
-  final blue = const Color(0xff529DE1);
+  final blue = const Color(0xff2997FF);
   final white = Colors.white;
 }

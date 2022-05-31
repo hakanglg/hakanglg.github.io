@@ -5,6 +5,7 @@ import 'package:porfolio_web/core/component/row/my_row.dart';
 import 'package:porfolio_web/feature/portfolio/view/portfolio_view.dart';
 import 'package:porfolio_web/feature/skills/view/skills_view.dart';
 import 'package:porfolio_web/product/components/button/discover_more_button.dart';
+import '../../../core/constants/image/image_constants.dart';
 import '../../../product/components/app_bar/app_bar_actions.dart';
 import '../../../product/components/app_bar/app_bar_title.dart';
 import '../../about/view/about_view.dart';
@@ -43,12 +44,12 @@ class HomeView extends StatelessWidget with BaseState {
                   SizedBox(
                     key: aboutKey,
                     height: constraint.maxHeight,
-                    child: const AboutView(),
+                    child: AboutView(),
                   ),
                   SizedBox(
                     key: skillsKey,
                     height: constraint.maxHeight,
-                    child: const SkillsView(),
+                    child: SkillsView(),
                   ),
                   SizedBox(
                     key: portfolioKey,
@@ -76,7 +77,9 @@ class HomeView extends StatelessWidget with BaseState {
     );
   }
 
-  Stack _WelcomeSection(BuildContext context) {
+  Stack _WelcomeSection(
+    BuildContext context,
+  ) {
     return Stack(children: [
       _BackgroundImage(),
       MyRow(
@@ -90,22 +93,8 @@ class HomeView extends StatelessWidget with BaseState {
             context.emptySizedHeightBoxNormal,
             _ButtonsSection(context),
             const Spacer(),
-            // InkWell(
-            //   onTap: () {
-            //     _viewModel.onItemTapped(2);
-            //   },
-            //   child: Column(
-            //     children: const [
-            //       Text("_discoverMore"),
-            //       Icon(LineAwesomeIcons.angle_down)
-            //     ],
-            //   ),
-            // )
             DiscoverMoreButton(
-              viewModel: _viewModel,
-              index: 2,
-              itemKey: aboutKey,
-            )
+                viewModel: _viewModel, index: 2, itemKey: aboutKey)
           ],
         ),
       ),
@@ -135,11 +124,11 @@ class HomeView extends StatelessWidget with BaseState {
 
   Container _BackgroundImage() {
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         image: DecorationImage(
           fit: BoxFit.cover,
           opacity: .7,
-          image: AssetImage("assets/images/wallpaper.JPG"),
+          image: AssetImage(ImagePaths.wallpaper.path()),
         ),
       ),
     );

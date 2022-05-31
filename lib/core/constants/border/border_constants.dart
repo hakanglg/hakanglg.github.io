@@ -4,6 +4,8 @@ class BorderConstants {
   static BorderConstants instance = BorderConstants._init();
   BorderConstants._init();
 
+  final radiusCircular = const Radius.circular(15);
+
   final radiusAllLow = BorderRadius.circular(15);
   final radiusAllNormal = BorderRadius.circular(25);
   final radiusAllHigh = BorderRadius.circular(50);
