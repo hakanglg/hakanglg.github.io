@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:porfolio_web/core/init/my_theme.dart';
+import 'package:porfolio_web/feature/about/view/about_view.dart';
 import 'package:provider/provider.dart';
-import 'feature/about/view/about_view.dart';
 import 'feature/home/view_modal/home_view_model.dart';
 
 Future<void> main() async {

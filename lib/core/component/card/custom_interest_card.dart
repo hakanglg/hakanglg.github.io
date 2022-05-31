@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:auto_size_text/auto_size_text.dart';
 import '../../base/base_state.dart';
 import 'package:kartal/kartal.dart';
 
@@ -10,30 +10,33 @@ class CustomInterestCard extends StatelessWidget with BaseState {
   CustomInterestCard({super.key, required this.icon, required this.title});
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: context.paddingNormal,
-      child: Container(
-          decoration: ShapeDecoration(
-              shape: borderConstants.radiusRoundedAllLow,
-              color: Colors.blueGrey[900]),
+    return Container(
+        // width: context.dynamicWidth(.1),
+        margin: context.paddingLow,
+        decoration: ShapeDecoration(
+            shape: borderConstants.radiusRoundedAllLow,
+            color: Colors.blueGrey[900]),
+        child: Padding(
+          padding: context.paddingNormal,
           child: Column(
-            // crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // const Spacer(),
-
               FittedBox(
-                child: Icon(icon),
+                child: Icon(
+                  icon,
+                ),
               ),
 
               context.emptySizedHeightBoxLow,
-              Text(
+              AutoSizeText(
                 title,
                 style: context.textTheme.bodyText2,
+                maxLines: 2,
               ),
+
               // const Spacer(),
             ],
-          )),
-    );
+          ),
+        ));
   }
 }
