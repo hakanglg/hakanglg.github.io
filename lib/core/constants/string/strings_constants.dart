@@ -2,6 +2,15 @@ class StringConstants {
   static StringConstants instance = StringConstants._init();
   StringConstants._init();
 
+  // URL
+  final String linkedinUrl = "https://www.linkedin.com/in/hakangolge/";
+  final String githubUrl = "https://github.com/hakanglg";
+  final String mailUrl = "hakangolge@yahoo.com";
+  // HOME VIEW STRING VALUES
+  final homeTitle = "Hi, I'm Hakan.";
+  final homeSubtitle = "Mobile Developer based in Istanbul.";
+  final contactME = "Contact Me";
+  final hireMe = "Hire Me";
   final createdBy = "This website created by Hakan Golge using Flutter";
 
   // ABOUT VIEW STRING VALUES

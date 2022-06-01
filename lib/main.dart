@@ -20,6 +20,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        theme: myTheme, debugShowCheckedModeBanner: false, home: HomeView());
+        title: "Hakan GOLGE",
+        theme: myTheme,
+        debugShowCheckedModeBanner: false,
+        home: HomeView());
   }
 }

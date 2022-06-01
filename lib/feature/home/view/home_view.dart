@@ -14,10 +14,6 @@ import '../view_modal/home_view_model.dart';
 class HomeView extends StatelessWidget with BaseState {
   final HomeViewModel _viewModel = HomeViewModel();
 
-  final String _headlineText = "Hi, I'm Hakan.";
-
-  final String _subtitle = "I'm a mobile developer in Turkey";
-
   final homeKey = GlobalKey();
 
   final aboutKey = GlobalKey();
@@ -80,7 +76,11 @@ class HomeView extends StatelessWidget with BaseState {
           aboutKey: aboutKey,
           skillsKey: skillsKey,
           portfolioKey: portfolioKey),
-      actions: [AppBarActions()],
+      actions: [
+        AppBarActions(
+          viewModel: _viewModel,
+        )
+      ],
     );
   }
 
@@ -112,21 +112,32 @@ class HomeView extends StatelessWidget with BaseState {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        TextButton(
-            onPressed: () {},
-            child: Text(
-              "Contact Me",
-              style: context.textTheme.bodyText2,
-            )),
+        _contactMeButton(context),
         context.emptySizedWidthBoxLow,
-        TextButton(
-            onPressed: () {},
-            child: Text(
-              "Hire Me",
-              style: context.textTheme.bodyText2,
-            )),
+        _hireMeButton(context),
       ],
     );
+  }
+
+  TextButton _contactMeButton(BuildContext context) {
+    final url = 'mailto:${stringConstants.mailUrl}?';
+
+    return TextButton(
+        onPressed: () => _viewModel.launchInBrowser(url),
+        child: Text(
+          stringConstants.contactME,
+          style: context.textTheme.bodyText2,
+        ));
+  }
+
+  TextButton _hireMeButton(BuildContext context) {
+    return TextButton(
+        onPressed: () =>
+            _viewModel.launchInBrowser(stringConstants.linkedinUrl),
+        child: Text(
+          stringConstants.hireMe,
+          style: context.textTheme.bodyText2,
+        ));
   }
 
   Container _BackgroundImage() {
@@ -143,11 +154,11 @@ class HomeView extends StatelessWidget with BaseState {
 
   // Row(
   Text _SubtitleText(BuildContext context) =>
-      Text(_subtitle, style: context.textTheme.subtitle2);
+      Text(stringConstants.homeSubtitle, style: context.textTheme.subtitle2);
 
   Text _nameTitleText(BuildContext context) {
     return Text(
-      _headlineText,
+      stringConstants.homeTitle,
       style: context.textTheme.headline3,
     );
   }

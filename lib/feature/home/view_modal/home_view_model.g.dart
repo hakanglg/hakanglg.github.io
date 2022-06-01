@@ -35,6 +35,14 @@ mixin _$HomeViewModel on _HomeViewModelBase, Store {
         .run(() => super.scrollToItem(context, itemKey));
   }
 
+  late final _$launchInBrowserAsyncAction =
+      AsyncAction('_HomeViewModelBase.launchInBrowser', context: context);
+
+  @override
+  Future<dynamic> launchInBrowser(String url) {
+    return _$launchInBrowserAsyncAction.run(() => super.launchInBrowser(url));
+  }
+
   late final _$_HomeViewModelBaseActionController =
       ActionController(name: '_HomeViewModelBase', context: context);
 
