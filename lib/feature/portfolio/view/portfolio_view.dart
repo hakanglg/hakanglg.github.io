@@ -32,7 +32,7 @@ class PortfolioView extends StatelessWidget with BaseState {
   }
 
   GoTopButton _fabButton() =>
-      GoTopButton(viewModel: viewModel, index: 0, itemKey: Customkey);
+      GoTopButton(viewModel: viewModel, index: 1, itemKey: Customkey);
 
   CarouselSlider _sliderWidget(BuildContext context) {
     return CarouselSlider(
