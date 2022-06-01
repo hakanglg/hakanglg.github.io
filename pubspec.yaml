@@ -72,7 +72,10 @@ flutter:
 
 
   assets:
-    - assets/images/wallpaper.JPG
+    - assets/images/wallpaper.PNG
+    - assets/images/otodo_light.PNG
+    - assets/images/otodo_dark.PNG
+    - assets/images/otodo_mockup.PNG
     - assets/fonts/
 
   fonts:

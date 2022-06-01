@@ -12,7 +12,7 @@ class CustomInterestCard extends StatelessWidget with BaseState {
   Widget build(BuildContext context) {
     return Container(
         // width: context.dynamicWidth(.1),
-        margin: context.paddingLow,
+        // margin: context.paddingLow,
         decoration: ShapeDecoration(
             shape: borderConstants.radiusRoundedAllLow,
             color: Colors.blueGrey[900]),

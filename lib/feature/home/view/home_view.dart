@@ -8,6 +8,7 @@ import 'package:porfolio_web/product/components/button/discover_more_button.dart
 import '../../../core/constants/image/image_constants.dart';
 import '../../../product/components/app_bar/app_bar_actions.dart';
 import '../../../product/components/app_bar/app_bar_title.dart';
+import '../../about/view/about_view.dart';
 import '../view_modal/home_view_model.dart';
 
 class HomeView extends StatelessWidget with BaseState {
@@ -40,20 +41,22 @@ class HomeView extends StatelessWidget with BaseState {
                       key: homeKey,
                       height: constraint.maxHeight,
                       child: _WelcomeSection(context)),
-                  // SizedBox(
-                  //   key: aboutKey,
-                  //   height: constraint.maxHeight,
-                  //   child:   AboutView(),
-                  // ),
+                  SizedBox(
+                    key: aboutKey,
+                    height: constraint.maxHeight,
+                    child:
+                        AboutView(Customkey: skillsKey, viewModel: _viewModel),
+                  ),
                   SizedBox(
                     key: skillsKey,
                     height: constraint.maxHeight,
-                    child: SkillsView(),
+                    child: SkillsView(
+                        Customkey: portfolioKey, viewModel: _viewModel),
                   ),
                   SizedBox(
                     key: portfolioKey,
                     height: constraint.maxHeight,
-                    child: const PortfolioView(),
+                    child: PortfolioView(Customkey: portfolioKey, viewModel: _viewModel),
                   )
                 ],
               ),
@@ -69,7 +72,7 @@ class HomeView extends StatelessWidget with BaseState {
       title: AppBarTitle(
           viewModel: _viewModel,
           homeKey: homeKey,
-          // aboutKey: aboutKey,
+          aboutKey: aboutKey,
           skillsKey: skillsKey,
           portfolioKey: portfolioKey),
       actions: [AppBarActions()],
@@ -93,7 +96,7 @@ class HomeView extends StatelessWidget with BaseState {
             _ButtonsSection(context),
             const Spacer(),
             DiscoverMoreButton(
-                viewModel: _viewModel, index: 2, itemKey: skillsKey)
+                viewModel: _viewModel, index: 2, itemKey: aboutKey)
           ],
         ),
       ),
