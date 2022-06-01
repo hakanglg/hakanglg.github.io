@@ -26,7 +26,11 @@ class PortfolioView extends StatelessWidget with BaseState {
       body: SingleChildScrollView(
           physics: const ScrollPhysics(),
           child: Column(
-            children: [_sliderWidget(context)],
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              _sliderWidget(context),
+            ],
           )),
     );
   }

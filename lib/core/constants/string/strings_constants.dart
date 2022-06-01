@@ -2,6 +2,8 @@ class StringConstants {
   static StringConstants instance = StringConstants._init();
   StringConstants._init();
 
+  final createdBy = "This website created by Hakan Golge using Flutter";
+
   // ABOUT VIEW STRING VALUES
   final about = "About me";
   final aboutSection =

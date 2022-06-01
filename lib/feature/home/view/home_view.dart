@@ -58,7 +58,11 @@ class HomeView extends StatelessWidget with BaseState {
                     height: constraint.maxHeight,
                     child: PortfolioView(
                         Customkey: homeKey, viewModel: _viewModel),
-                  )
+                  ),
+                  Text(
+                    stringConstants.createdBy,
+                    style: context.textTheme.subtitle2,
+                  ),
                 ],
               ),
             ),
