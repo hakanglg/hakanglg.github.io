@@ -56,7 +56,8 @@ class HomeView extends StatelessWidget with BaseState {
                   SizedBox(
                     key: portfolioKey,
                     height: constraint.maxHeight,
-                    child: PortfolioView(Customkey: portfolioKey, viewModel: _viewModel),
+                    child: PortfolioView(
+                        Customkey: homeKey, viewModel: _viewModel),
                   )
                 ],
               ),

@@ -2,7 +2,14 @@
 
 import 'package:flutter/widgets.dart';
 
-enum ImagePaths { wallpaper, otodo_light, otodo_dark, otodo_mockup }
+enum ImagePaths {
+  wallpaper,
+  otodo_light,
+  otodo_dark,
+  otodo_mockup,
+  dabasir_dark,
+  dabasir_mockup
+}
 
 extension ImagePathsExtension on ImagePaths {
   String path() {

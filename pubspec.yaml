@@ -76,6 +76,8 @@ flutter:
     - assets/images/otodo_light.PNG
     - assets/images/otodo_dark.PNG
     - assets/images/otodo_mockup.PNG
+    - assets/images/dabasir_mockup.PNG
+    - assets/images/dabasir_dark.PNG
     - assets/fonts/
 
   fonts:
