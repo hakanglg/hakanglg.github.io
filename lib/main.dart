@@ -1,28 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:porfolio_web/core/init/my_theme.dart';
-import 'package:porfolio_web/feature/home/view/home_view.dart';
-import 'package:provider/provider.dart';
-import 'feature/home/view_modal/home_view_model.dart';
+import 'package:portfolio_me/product/utility/constants/app/app_constants.dart';
+import 'package:portfolio_me/product/init/theme.dart';
+import 'package:portfolio_me/feature/home/home_view.dart';
 
-Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations(
-      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-  runApp(MultiProvider(providers: [
-    Provider<HomeViewModel>(
-      create: (context) => HomeViewModel(),
-    ),
-  ], child: MyApp()));
-}
+void main() => runApp(  const MyApp());
 
-class MyApp extends StatelessWidget {
+ 
+class MyApp extends StatelessWidget  {
+    const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        title: "Hakan GOLGE",
-        theme: myTheme,
-        debugShowCheckedModeBanner: false,
-        home: HomeView());
+    return   MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: AppConstants.instance.appName,
+      theme: myTheme,
+      home:   HomeView()
+    );
   }
 }
