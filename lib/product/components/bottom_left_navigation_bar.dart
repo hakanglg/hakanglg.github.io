@@ -19,7 +19,6 @@ final class BottomLeftNavigationBar extends StatelessWidget with BaseState {
             children: <Widget>[
               InkWell(
                 onTap: () async {
-                  print('LinkedIn tapped');
                   await stringConstants.linkedinUrl.launchURL();
                 },
                 child: Icon(
@@ -30,7 +29,6 @@ final class BottomLeftNavigationBar extends StatelessWidget with BaseState {
               context.sized.emptySizedHeightBoxLow,
               InkWell(
                 onTap: () async {
-                  print('GitHub tapped');
                   await stringConstants.githubUrl.launchURL();
                 },
                 child: Icon(
@@ -41,7 +39,6 @@ final class BottomLeftNavigationBar extends StatelessWidget with BaseState {
               context.sized.emptySizedHeightBoxLow,
               InkWell(
                 onTap: () async {
-                  print('Medium tapped');
                   await stringConstants.mediumUrl.launchURL();
                 },
                 child: Icon(
@@ -49,7 +46,6 @@ final class BottomLeftNavigationBar extends StatelessWidget with BaseState {
                   color: colorConstants.activeWhite,
                 ),
               ),
-
               context.sized.emptySizedHeightBoxLow,
               Container(
                 height: context.sized.dynamicHeight(.17),

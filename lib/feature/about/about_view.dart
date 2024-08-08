@@ -36,14 +36,14 @@ final class AboutView extends StatelessWidget with BaseState {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Spacer(),
+            const Spacer(),
             _buildLeftSection(context),
             const Spacer(),
             NestedBorders(
               frontBackgroundColor: colorConstants.passiveGreen,
               icon: Icons.apple,
             ),
-            Spacer(),
+            const Spacer(),
 
           ],
         ),
@@ -51,8 +51,8 @@ final class AboutView extends StatelessWidget with BaseState {
     );
   }
 
-  Container _buildLeftSection(BuildContext context) {
-    return Container(
+  SizedBox _buildLeftSection(BuildContext context) {
+    return SizedBox(
       width: context.sized.dynamicWidth(0.4),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -71,16 +71,13 @@ final class AboutView extends StatelessWidget with BaseState {
 
   GridView _techChipsGridViewBuilder() {
     return GridView.builder(
-        // eleman sayısı
         itemCount: _techList.length,
-        // elemanlara her yerden 5 oranında boşluk ver
         padding: const EdgeInsets.all(5),
-        // yan yana eleman sayısı
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 4,
           crossAxisSpacing: 1.0,
           mainAxisSpacing: 1.0,
-          childAspectRatio: 3, // Bu oran genişlik ve yükseklik oranını kontrol eder
+          childAspectRatio: 3,
         ),
         itemBuilder: (BuildContext context, int index) {
           return TechChip(text: _techList[index]);
@@ -90,11 +87,8 @@ final class AboutView extends StatelessWidget with BaseState {
 
 
   Text _buildDescription(BuildContext context) {
-    return Text(
-          """Hello, I’m Hakan, a self-taught iOS and Flutter developer with 3 years of experience in mobile development. I love creating new things, adding value, and being productive. 
-          \nI specialize in building high-quality, easily extendable mobile apps from the ground up, overseeing every stage of the product lifecycle from conception to publication.
-While working as a Mobile Developer, I also continue to develop other applications and work on new ventures simultaneously. In addition to my technical skills, I bring a holistic approach to development by considering the perspectives of managers, designers, and product owners. This enables me to integrate platform-specific features seamlessly and ensure the product meets diverse stakeholder needs.""",
-          style: context.general.textTheme.bodySmall!
+    return Text(stringConstants.aboutDescription,
+                    style: context.general.textTheme.bodySmall!
               .copyWith(color: colorConstants.activeWhite),
         );
   }

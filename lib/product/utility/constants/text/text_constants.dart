@@ -9,5 +9,5 @@ class TextConstants {
 
   TextConstants._init();
 
-  final TextStyle headlineSmall = TextStyle();
+  // final TextStyle headlineSmall = TextStyle();
 }

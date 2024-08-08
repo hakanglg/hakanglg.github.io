@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:portfolio_me/product/utility/constants/radius/project_radius.dart';
 
 class NestedBorders extends StatelessWidget {
   final double width;
@@ -7,7 +8,7 @@ class NestedBorders extends StatelessWidget {
   final Color frontBorderColor;
   final Color frontBackgroundColor;
   final Color backBorderColor;
-  final double borderRadius;
+  final ProjectRadius borderRadius;
   final double offset;
   final IconData? icon; // Nullable to support either icon or SVG
   final String? svgAsset; // Optional parameter for SVG
@@ -21,7 +22,7 @@ class NestedBorders extends StatelessWidget {
     this.frontBorderColor = Colors.cyan,
     this.frontBackgroundColor = Colors.white,
     this.backBorderColor = Colors.cyanAccent,
-    this.borderRadius = 20,
+    this.borderRadius = ProjectRadius.normal,
     this.offset = 20,
     this.icon,
     this.svgAsset,
@@ -46,7 +47,7 @@ class NestedBorders extends StatelessWidget {
               decoration: BoxDecoration(
                 color: Colors.transparent,
                 border: Border.all(color: backBorderColor, width: borderWidth),
-                borderRadius: BorderRadius.circular(borderRadius),
+                borderRadius: BorderRadius.circular(borderRadius.value),
               ),
             ),
           ),
@@ -60,7 +61,7 @@ class NestedBorders extends StatelessWidget {
               decoration: BoxDecoration(
                 color: frontBackgroundColor,
                 border: Border.all(color: frontBorderColor, width: borderWidth),
-                borderRadius: BorderRadius.circular(borderRadius),
+                borderRadius: BorderRadius.circular(borderRadius.value),
               ),
               child: Center(
                 child: icon != null

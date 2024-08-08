@@ -3,19 +3,17 @@ import 'package:portfolio_me/product/utility/constants/app/app_constants.dart';
 import 'package:portfolio_me/product/init/theme.dart';
 import 'package:portfolio_me/feature/home/home_view.dart';
 
-void main() => runApp(  const MyApp());
+void main() => runApp(const MyApp());
 
- 
-class MyApp extends StatelessWidget  {
-    const MyApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return   MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: AppConstants.instance.appName,
-      theme: myTheme,
-      home:   HomeView()
-    );
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: AppConstants.instance.appName,
+        theme: myTheme,
+        home: const HomeView());
   }
 }

@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 import 'package:portfolio_me/product/base/base_state.dart';
 import 'package:portfolio_me/product/components/custom_title.dart';
-import 'package:portfolio_me/product/components/nested_borders.dart';
+import 'package:portfolio_me/product/components/mockup_builder.dart';
 import 'package:portfolio_me/product/widget/column/padding_vertical.dart';
 import 'package:portfolio_me/product/widget/row/padding_horizontal.dart';
 
+@immutable
 class WorkView extends StatelessWidget with BaseState {
   WorkView({super.key});
 
@@ -13,45 +14,37 @@ class WorkView extends StatelessWidget with BaseState {
   Widget build(BuildContext context) {
     return PaddingVertical(
       child: PaddingHorizontal(
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
+        child: Column(
           children: [
-            const Spacer(),
-            _buildLeftSection(context),
-            const Spacer(),
-            SizedBox(width: 300),
-            Spacer()
-            // NestedBorders(
-            //   frontBackgroundColor: colorConstants.passiveGreen,
-            //   // icon: Icons.flutter_dash,
-            //   svgAsset: 'assets/svg/ic_flutter.svg',
-            // ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                const Spacer(),
+                _buildLeftSection(context),
+                const Spacer(),
+                const SizedBox(width: 300),
+                const Spacer(),
+              ],
+            ),
+            Expanded(child: MockupBuilder(colorConstants: colorConstants)),
           ],
         ),
       ),
     );
   }
 
-
-  Container _buildLeftSection(BuildContext context) {
-    return Container(
+  SizedBox _buildLeftSection(BuildContext context) {
+    return SizedBox(
       width: context.sized.dynamicWidth(0.4),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           CustomTitle(no: "03", title: "Some Things  I’ve Built"),
-          context.sized.emptySizedHeightBoxLow,
-          // _buildDescription(context),
-          // SwitchableProfileCard(),
-          context.sized.emptySizedHeightBoxLow,
-          // Expanded(child: _techChipsGridViewBuilder()),
-
+          context.sized.emptySizedHeightBoxLow3x,
         ],
       ),
     );
   }
-
 }
-

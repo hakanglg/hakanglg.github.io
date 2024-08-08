@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:kartal/kartal.dart';
-import 'package:portfolio_me/feature/contact_view.dart';
+import 'package:portfolio_me/feature/contact/contact_view.dart';
 import 'package:portfolio_me/feature/experience/experience_view.dart';
 import 'package:portfolio_me/feature/home/home_view_mixin.dart';
 import 'package:portfolio_me/feature/welcome_view.dart';
-import 'package:portfolio_me/feature/work_view.dart';
+import 'package:portfolio_me/feature/work/work_view.dart';
 import 'package:portfolio_me/product/components/bottomRightNavigationBar.dart';
 import 'package:portfolio_me/product/components/bottom_left_navigation_bar.dart';
 import 'package:portfolio_me/product/widget/button/default_button.dart';
@@ -38,20 +38,6 @@ class _HomeViewState extends State<HomeView> with HomeViewMixin, BaseState {
           builder: (context, constraints) {
             return Stack(
               children: [
-                !context.device.isSmallScreen
-                    ? Positioned(
-                  bottom: 0,
-                  left: 20,
-                  child: BottomLeftNavigationBar(),
-                )
-                    : const SizedBox(),
-                !context.device.isSmallScreen
-                    ? const Positioned(
-                  bottom: 0,
-                  right: 80,
-                  child: BottomRightNavigationBar(),
-                )
-                    : const SizedBox(),
                 Positioned.fill(
                   child: SingleChildScrollView(
                     controller: scrollController,
@@ -69,6 +55,16 @@ class _HomeViewState extends State<HomeView> with HomeViewMixin, BaseState {
                     ),
                   ),
                 ),
+                !context.device.isSmallScreen ? Positioned(
+                  bottom: 0,
+                  left: 20,
+                  child: BottomLeftNavigationBar(),
+                ) : const SizedBox(),
+                !context.device.isSmallScreen ? const Positioned(
+                  bottom: 0,
+                  right: 80,
+                  child: BottomRightNavigationBar(),
+                ) : const SizedBox(),
               ],
             );
           },

@@ -1,21 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_me/product/utility/constants/app/app_constants.dart';
 import 'package:portfolio_me/product/utility/constants/color/color_constants.dart';
 
 
 
 final ThemeData myTheme = ThemeData(
-  fontFamily: 'Poppins',
-  useMaterial3: true
-,
+  fontFamily: AppConstants.FONT_FAMILY,
+  useMaterial3: true,
   scaffoldBackgroundColor: ColorConstants.instance.passiveGreen,
   appBarTheme: AppBarTheme(
     backgroundColor: ColorConstants.instance.passiveGreen,
     elevation: 0,
     iconTheme: IconThemeData(color: ColorConstants.instance.activeWhite),
     titleTextStyle: TextStyle(color: ColorConstants.instance.activeWhite),
-    
   ),
-
   textTheme: TextTheme(
     headlineSmall: TextStyle(
       color: ColorConstants.instance.activeWhite,

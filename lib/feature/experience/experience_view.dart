@@ -6,6 +6,7 @@ import 'package:portfolio_me/product/components/custom_title.dart';
 import 'package:portfolio_me/product/components/experience_stepper.dart';
 import 'package:portfolio_me/product/components/nested_borders.dart';
 import 'package:portfolio_me/product/utility/constants/color/color_constants.dart';
+import 'package:portfolio_me/product/utility/enum/image_enum.dart';
 import 'package:portfolio_me/product/widget/button/default_button.dart';
 import 'package:portfolio_me/product/widget/column/padding_vertical.dart';
 import 'package:portfolio_me/product/widget/row/padding_horizontal.dart';
@@ -27,7 +28,7 @@ class ExperienceView extends StatelessWidget with BaseState {
               NestedBorders(
                 frontBackgroundColor: colorConstants.passiveGreen,
                 // icon: Icons.flutter_dash,
-                svgAsset: 'assets/svg/ic_flutter.svg',
+                svgAsset: ImageItems.FlutterIcon.imagePathSvg,
               ),
               const Spacer(),
             ],
