@@ -30,7 +30,7 @@ class _HomeViewState extends State<HomeView> with HomeViewMixin, BaseState {
       key: _scaffoldKey,
       child: Scaffold(
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(context.device.isSmallScreen ? 60 : 100),
+          preferredSize: Size.fromHeight(context.device.isLargeScreen ? 100 : 80),
           child: _buildAppBar(context),
         ),
         drawer: _buildDrawer(context),
@@ -41,30 +41,37 @@ class _HomeViewState extends State<HomeView> with HomeViewMixin, BaseState {
                 Positioned.fill(
                   child: SingleChildScrollView(
                     controller: scrollController,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        _buildSection(context, welcomeKey, WelcomeView()),
-                        _buildSection(context, aboutKey, AboutView()),
-                        _buildSection(context, experienceKey, ExperienceView()),
-                        _buildSection(context, workKey, WorkView()),
-                        _buildSection(context, contactKey, ContactView()),
-                      ],
+                    child: ConstrainedBox(
+                      constraints: BoxConstraints(minHeight: constraints.maxHeight),
+                      child: IntrinsicHeight(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            _buildSection(context, welcomeKey, WelcomeView()),
+                            _buildSection(context, aboutKey, AboutView()),
+                            _buildSection(context, experienceKey, ExperienceView()),
+                            _buildSection(context, workKey, WorkView()),
+                            _buildSection(context, contactKey, ContactView()),
+                          ],
+                        ),
+                      ),
                     ),
                   ),
                 ),
-                !context.device.isSmallScreen ? Positioned(
-                  bottom: 0,
-                  left: 20,
-                  child: BottomLeftNavigationBar(),
-                ) : const SizedBox(),
-                !context.device.isSmallScreen ? const Positioned(
-                  bottom: 0,
-                  right: 80,
-                  child: BottomRightNavigationBar(),
-                ) : const SizedBox(),
+                if (!context.device.isSmallScreen) ...[
+                  Positioned(
+                    bottom: 0,
+                    left: 20,
+                    child: BottomLeftNavigationBar(),
+                  ),
+                  const Positioned(
+                    bottom: 0,
+                    right: 80,
+                    child: BottomRightNavigationBar(),
+                  ),
+                ],
               ],
             );
           },
@@ -161,10 +168,12 @@ class _HomeViewState extends State<HomeView> with HomeViewMixin, BaseState {
   }
 
   Widget _buildSection(BuildContext context, GlobalKey key, Widget child) {
-    return SizedBox(
+    return Flexible(
       key: key,
-      height: MediaQuery.of(context).size.height,
-      child: child,
+      child: SizedBox(
+        height: MediaQuery.of(context).size.height,
+        child: child,
+      ),
     );
   }
 

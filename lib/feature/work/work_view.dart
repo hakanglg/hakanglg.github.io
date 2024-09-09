@@ -12,6 +12,9 @@ class WorkView extends StatelessWidget with BaseState {
 
   @override
   Widget build(BuildContext context) {
+    final bool isSmallScreen = context.device.isSmallScreen; // Ekran boyutuna göre küçük ekran kontrolü
+    final double dynamicWidth = isSmallScreen ? 0.8 : 0.4; // Küçük ekranlarda genişliği artırıyoruz
+
     return PaddingVertical(
       child: PaddingHorizontal(
         child: Column(
@@ -21,12 +24,16 @@ class WorkView extends StatelessWidget with BaseState {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 const Spacer(),
-                _buildLeftSection(context),
-                const Spacer(),
-                const SizedBox(width: 300),
-                const Spacer(),
+                _buildLeftSection(context, dynamicWidth),
+                if (!isSmallScreen) ...[
+                  const Spacer(),
+                  const SizedBox(width: 300), // Yalnızca büyük ekranlarda boşluk bırakıyoruz
+                  const Spacer(),
+                ],
               ],
             ),
+            if (isSmallScreen)
+              context.sized.emptySizedHeightBoxLow3x, // Küçük ekranlarda dikey boşluk ekliyoruz
             Expanded(child: MockupBuilder(colorConstants: colorConstants)),
           ],
         ),
@@ -34,14 +41,14 @@ class WorkView extends StatelessWidget with BaseState {
     );
   }
 
-  SizedBox _buildLeftSection(BuildContext context) {
+  SizedBox _buildLeftSection(BuildContext context, double dynamicWidth) {
     return SizedBox(
-      width: context.sized.dynamicWidth(0.4),
+      width: context.sized.dynamicWidth(dynamicWidth), // Genişliği ekran boyutuna göre ayarlıyoruz
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          CustomTitle(no: "03", title: "Some Things  I’ve Built"),
+          CustomTitle(no: "03", title: "Some Things I’ve Built"),
           context.sized.emptySizedHeightBoxLow3x,
         ],
       ),

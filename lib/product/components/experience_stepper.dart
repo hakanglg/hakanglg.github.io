@@ -52,18 +52,34 @@ class _ExperienceStepperState extends State<ExperienceStepper> {
 
   @override
   Widget build(BuildContext context) {
+    return context.device.isLargeScreen ?  _buildLargeSection(context) : _buildSmallSection(context);
+  }
+
+  Row _buildLargeSection(BuildContext context) {
     return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      _buildLeftSection(context),
+      Expanded(
+        child: Padding(
+          padding: context.padding.horizontalPaddingMedium,
+          child: _selectedExperience != null
+              ? _buildProfileContent(_selectedExperience!)
+              : const SizedBox.shrink(), // İçerik yoksa boş bırak
+        ),
+      ),
+    ],
+  );
+  }
+
+  Widget _buildSmallSection(BuildContext context) {
+    return Column(
       children: [
         _buildLeftSection(context),
-        Expanded(
-          child: Padding(
-            padding: context.padding.horizontalPaddingMedium,
-            child: _selectedExperience != null
-                ? _buildProfileContent(_selectedExperience!)
-                : const SizedBox.shrink(), // İçerik yoksa boş bırak
-          ),
-        ),
+        context.sized.emptySizedHeightBoxLow3x,
+        _selectedExperience != null
+            ? _buildProfileContent(_selectedExperience!)
+            : const SizedBox.shrink(), // İçerik yoksa boş bırak
       ],
     );
   }

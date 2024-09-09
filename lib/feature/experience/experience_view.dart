@@ -12,47 +12,62 @@ import 'package:portfolio_me/product/widget/column/padding_vertical.dart';
 import 'package:portfolio_me/product/widget/row/padding_horizontal.dart';
 
 class ExperienceView extends StatelessWidget with BaseState {
-    ExperienceView({super.key});
+  ExperienceView({super.key});
 
-    @override
-    Widget build(BuildContext context) {
-      return PaddingVertical(
-        child: PaddingHorizontal(
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              const Spacer(),
-              _buildLeftSection(context),
-              const Spacer(),
-              NestedBorders(
-                frontBackgroundColor: colorConstants.passiveGreen,
-                // icon: Icons.flutter_dash,
-                svgAsset: ImageItems.FlutterIcon.imagePathSvg,
-              ),
-              const Spacer(),
-            ],
-          ),
+  @override
+  Widget build(BuildContext context) {
+    return PaddingVertical(
+      child: PaddingHorizontal(
+        child: context.device.isLargeScreen
+            ? _buildLargeBody(context)
+            : _buildSmallBody(context),
+      ),
+    );
+  }
+
+  Row _buildLargeBody(BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        const Spacer(),
+        _buildLeftSection(context),
+        const Spacer(),
+        NestedBorders(
+          frontBackgroundColor: colorConstants.passiveGreen,
+          svgAsset: ImageItems.FlutterIcon.imagePathSvg,
         ),
-      );
-    }
+        const Spacer(),
+      ],
+    );
+  }
 
+  Widget _buildSmallBody(BuildContext context) {
+    return _buildLeftSectionSmall(context);
+  }
 
-    Container _buildLeftSection(BuildContext context) {
-      return Container(
-        width: context.sized.dynamicWidth(0.4),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            CustomTitle(no: "02", title: "Experience"),
-            context.sized.emptySizedHeightBoxLow,
-            context.sized.emptySizedHeightBoxLow,
-            ExperienceStepper(),
+  Widget _buildLeftSectionSmall(BuildContext context) {
+    return Wrap(
+      children: [
+        CustomTitle(no: "02", title: "Experience"),
+        context.sized.emptySizedHeightBoxLow,
+        ExperienceStepper(),
+      ],
+    );
+  }
 
-          ],
-        ),
-      );
-    }
-
+  Container _buildLeftSection(BuildContext context) {
+    return Container(
+      width: context.sized.dynamicWidth(0.4),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          CustomTitle(no: "02", title: "Experience"),
+          context.sized.emptySizedHeightBoxLow,
+          ExperienceStepper(),
+        ],
+      ),
+    );
+  }
 }

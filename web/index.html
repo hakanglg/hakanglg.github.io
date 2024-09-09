@@ -15,44 +15,66 @@
     the `--base-href` argument provided to `flutter build`.
   -->
 
-
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
+  <meta name="description" content="Created with Flutter">
 
   <!-- iOS meta tags & icons -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="porfolio_web">
+  <meta name="apple-mobile-web-app-title" content="Hakan GOLGE">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
+  <!--  <link rel="icon" type="image/png" href="favicon.png"/>-->
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
-  <title>porfolio_web</title>
+  <title>Hakan GOLGE</title>
   <link rel="manifest" href="manifest.json">
 
   <script>
     // The value below is injected by flutter build, do not touch.
     var serviceWorkerVersion = null;
   </script>
+
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
+
+  <!-- Lottie Web Kütüphanesi -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.6/lottie.min.js"></script>
 </head>
 <body>
-  <script>
-    window.addEventListener('load', function(ev) {
-      // Download main.dart.js
-      _flutter.loader.loadEntrypoint({
-        serviceWorker: {
-          serviceWorkerVersion: serviceWorkerVersion,
-        }
-      }).then(function(engineInitializer) {
-        return engineInitializer.initializeEngine();
-      }).then(function(appRunner) {
-        return appRunner.runApp();
-      });
+<!-- Splash Screen için Lottie Animasyon Konteyneri -->
+<div id="splash-screen" style="position: absolute; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background-color: #FFFFFF;">
+  <!-- Lottie Animasyonu Buraya Yüklenecek -->
+  <div id="lottie-container" style="width: 200px; height: 200px;"></div>
+</div>
+
+<script>
+  window.addEventListener('load', function(ev) {
+    // Lottie Animasyonunu Yükleme
+    var animation = lottie.loadAnimation({
+      container: document.getElementById('lottie-container'), // Animasyonun yükleneceği element
+      renderer: 'svg', // SVG Renderer kullanıyoruz
+      loop: true, // Animasyonun döngüde çalışması
+      autoplay: true, // Sayfa yüklendiğinde otomatik başlat
+      path: 'assets/lottie/lottie_loading.json' // Lottie dosyanızın yolu
     });
-  </script>
+
+    // Flutter uygulaması yüklendiğinde splash ekranını gizleme
+    _flutter.loader.loadEntrypoint({
+      serviceWorker: {
+        serviceWorkerVersion: serviceWorkerVersion,
+      }
+    }).then(function(engineInitializer) {
+      return engineInitializer.initializeEngine();
+    }).then(function(appRunner) {
+      // Uygulama çalıştırıldıktan sonra splash screen'i gizle
+      document.getElementById('splash-screen').style.display = 'none';
+      return appRunner.runApp();
+    });
+  });
+</script>
 </body>
 </html>
