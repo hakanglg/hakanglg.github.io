@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="/">
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="Created with Flutter">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Hakan GOLGE">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <title>Hakan GOLGE</title>
+  <link rel="manifest" href="manifest.json">
+
+  <script>
+    window.flutterWebRenderer = "html";
+    const serviceWorkerVersion = "2741973944";
+  </script>
+
+  <script src="flutter.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+</head>
+<body>
+<div id="splash-screen" style="position: fixed; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background-color: #FFFFFF; z-index: 999;">
+  <div id="lottie-container" style="width: 200px; height: 200px;"></div>
+</div>
+
+<script>
+  window.addEventListener('load', function() {
+    var animation = lottie.loadAnimation({
+      container: document.getElementById('lottie-container'),
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      path: 'assets/lottie/lottie_loading.json'
+    });
+
+    _flutter.loader.loadEntrypoint({
+      serviceWorker: {
+        serviceWorkerVersion: serviceWorkerVersion,
+      },
+      onEntrypointLoaded: async function(engineInitializer) {
+        try {
+          const appRunner = await engineInitializer.initializeEngine();
+          // Smooth fade out animation
+          var splashScreen = document.getElementById('splash-screen');
+          splashScreen.style.transition = 'opacity 0.5s ease';
+          splashScreen.style.opacity = '0';
+
+          setTimeout(function() {
+            splashScreen.remove();
+          }, 500);
+
+          await appRunner.runApp();
+        } catch (error) {
+          console.error('Flutter initialization error:', error);
+        }
+      }
+    });
+  });
+</script>
+
+<style>
+  body {
+    margin: 0;
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+  }
+</style>
+</body>
+</html>
